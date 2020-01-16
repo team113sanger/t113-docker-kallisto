@@ -14,4 +14,4 @@ script:
  - docker build -t kallisto .
  - docker images | grep -c kallisto
  - echo 'Verify program(s) from this repo'
- - docker run -t --rm kallisto kallisto
+ - docker run -t --rm kallisto version
