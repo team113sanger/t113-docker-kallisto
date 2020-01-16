@@ -53,15 +53,11 @@ set -u
 
 # kallisto
 if [ ! -e $SETUP_DIR/kallisto.success ]; then
-  curl -sSl --retry 10 -o dist.tar.gz https://github.com/pachterlab/kallisto/releases/download/v0.46.1/kallisto_linux-v${VER_KALLISTO}.tar.gz
+  curl -sSL --retry 10 -o dist.tar.gz https://github.com/pachterlab/kallisto/releases/download/v0.46.1/kallisto_linux-v${VER_KALLISTO}.tar.gz
   tar -xzf dist.tar.gz
-  cd kallisto
-  mkdir build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=$INST_PATH/bin ..
-  make
-  make install
-  rm -rf dist.tar.gz kallisto/*
+  mv kallisto $INST_PATH/kallisto
+  ln -s $INST_PATH/kallisto/kallisto $INST_PATH/bin/kallisto
+  rm -rf dist.tar.gz
   touch $SETUP_DIR/kallisto.success
 fi
 

@@ -30,8 +30,6 @@ LABEL maintainer="vo1@sanger.ac.uk" \
 MAINTAINER  Victoria Offord <vo1@sanger.ac.uk>
 
 RUN apt-get -yq update
-RUN apt-get install -yq --no-install-recommends \
-libcurl4
 
 ENV OPT /opt/wsi-t113
 ENV PATH $OPT/bin:$OPT/python3/bin:$PATH
